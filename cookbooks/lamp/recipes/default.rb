@@ -11,7 +11,7 @@ service 'mysql' do
   supports :status => true, :restart => true, :reload => true
   action [ :enable, :start ]
 end
-#execute "mysql -u root -padmin < /vagrant/createUser.sql"
+execute "mysql -u root -padmin < /vagrant/createUser.sql"
 execute "installComposer" do
   command "curl -Ss https://getcomposer.org/installer | php"
   user "vagrant"
