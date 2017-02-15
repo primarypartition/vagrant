@@ -13,7 +13,7 @@ sudo service mysql start
 mysql -u root -padmin < /vagrant/createUser.sql
 # Install composer
 curl -Ss https://getcomposer.org/installer | php
-sudo mv composer.phar /usr/bin/composer
+mv composer.phar /usr/bin/composer
 # Change the ownership of /var/www to be owned by vagrant to be able to work on it using the shared folder
 sudo chown -R vagrant:vagrant /var/www
 # Use composer to install Laravel 5.1
