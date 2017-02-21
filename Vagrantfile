@@ -22,13 +22,17 @@ Vagrant.configure("2") do |config|
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
-   config.vm.network "forwarded_port", guest: 80, host: 8080
+   # config.vm.network "private_network", ip: "172.16.0.10"
+   #config.vm.network "forwarded_port", guest: 80, host: 8080
+   #config.vm.network "public_network", bridge: "en1: Wi-Fi (AirPort)"
+   #config.vm.network "public_network", bridge: "en0: Ethernet"
+   #config.vm.network "forwarded_port", guest: 123, host: 1230, protocol: "udp"
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  # config.vm.network "private_network", ip: "192.168.33.10"
 
-  # Create a public network, which generally matched to bridged network.
+
+  # Create] a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
   # your network.
   # config.vm.network "public_network"
@@ -69,5 +73,13 @@ Vagrant.configure("2") do |config|
   #   apt-get install -y apache2
   # SHELL
   #config.vm.provision "shell", path: "deployLAMP.sh", privileged: false
-  config.vm.provision "chef_solo", run_list: ["lamp"]
+
+  config.vm.define "app" do |app|
+    app.vm.provision "chef_solo", run_list: ["app"]
+    app.vm.network "private_network", ip: "172.28.128.10"
+  end
+  config.vm.define "db" do |db|
+    db.vm.provision "chef_solo", run_list: ["db"]
+    db.vm.network "private_network", ip: "172.28.128.100"
+  end
 end

@@ -1,0 +1,28 @@
+{
+	"name"			: "myboxes/laravel5",
+	"description"	: "This box contains Ubuntu 16.04 LTS, the LAMP stack, along with Laravel 5 PHP framework",
+	"versions"		: [
+		{
+			"version"	: "1.0",
+			"providers"	: [
+				{
+					"name"			: "virtualbox",
+					"url"			: "http://myboxes.example.com/laravel5.box",
+					"checksum_type"	: "sha1",
+					"checksum"		: "4c602484b5c49009d6d7f041e14b5fdd95522fec"
+				}
+			]
+		},
+		{
+			"version"	: "1.1",
+			"providers"	: [
+				{
+					"name"		: "vmware-desktop",
+					"url"			: "http://myboxes.example.com/laravel5-vmware.box",
+					"checksum_type"	: "sha1",
+					"checksum"		: "4c602484b5c49009d6d7f041e14b5fdd95522fec"
+				}
+			]
+		}
+	]
+}
